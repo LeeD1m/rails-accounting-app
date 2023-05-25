@@ -1,31 +1,38 @@
 class Auth::LoginsController < ApplicationController
-  skip_before_action :logged_in?
+  # skip_before_action :authentication
 
   def new; 
-    if current_user
-      redirect_to users_path
-    end
+    # if current_user
+    #   redirect_to users_path
+    # end
   end
 
-  def create
+  def login
     user = User.find_by(email: permitted_params[:email])
+    # render json: { user: user }
+    # you can use bcrypt to password authentication
     if user && user.password == permitted_params[:password]
-      session[:current_user_id] = user.id
 
-      flash[:success] = ['You are logged in']
+      # we encrypt user info using the pre-define methods in application controller
+      token = encode_user_data({ user_data: user.id, email: user.email })
+
+      # return to user
+      # render json: { token: token }
+      flash[:success] = ["You are logged in with token #{token}" ]
       redirect_to users_path
     else
-      flash[:danger] = ['Unathorized user']
+      # render json: { message: "invalid credentials" }
+      flash[:danger] = ["invalid credentials" ]
       redirect_to login_path
     end
   end
 
   def destroy
-    session[:current_user_id] = nil
+    token = nil
     redirect_to login_path
   end
 
-  private
+  # private
 
   def permitted_params
     params.require(:user).permit(:email, :password)
