@@ -1,1 +1,21 @@
-<%= @users.map { |e| p e.email } %>
+<div class="p-4">
+<span>current user: <%= current_user.email %></span>
+
+<h6>All users</h6>
+<table>
+  <thead>
+    <tr>
+      <th>email</th>
+      <th>password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.password %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

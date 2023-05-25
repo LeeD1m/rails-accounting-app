@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  skip_before_action :logged_in?, only: :new
+
+  
   def index
-    @users = User.where(first_name: nil)
+    @users = User.all
   end
 
   def new
@@ -24,6 +27,6 @@ class UsersController < ApplicationController
   private
 
   def permitted_params
-    params.require(:user).permit(:email, :password, :first_name)
+    params.require(:user).permit(:email, :password)
   end
 end

@@ -1,7 +1,11 @@
-class LoginsController < ApplicationController
+class Auth::LoginsController < ApplicationController
   skip_before_action :logged_in?
 
-  def new; end
+  def new; 
+    if current_user
+      redirect_to users_path
+    end
+  end
 
   def create
     user = User.find_by(email: permitted_params[:email])
@@ -11,9 +15,14 @@ class LoginsController < ApplicationController
       flash[:success] = ['You are logged in']
       redirect_to users_path
     else
-      flash[:danger] = ['Unathorize user']
+      flash[:danger] = ['Unathorized user']
       redirect_to login_path
     end
+  end
+
+  def destroy
+    session[:current_user_id] = nil
+    redirect_to login_path
   end
 
   private
