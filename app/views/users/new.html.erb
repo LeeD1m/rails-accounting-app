@@ -1,6 +1,11 @@
 <%= form_with model: @user do |f| %>
-  <%= f.text_area :email %>
-  <%= f.text_area :password %>
-
-  <%= f.button :submit %>
+<div class="container">
+  <div class="col-4">
+      <%= simple_form_for :user, url: login_path do |f| %>
+        <%= f.input :email %>
+        <%= f.input :password %>
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+      <% end %>
+  </div>
+</div>
 <% end %>

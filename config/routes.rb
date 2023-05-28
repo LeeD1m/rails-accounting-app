@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  root to: "logins#new"
+  root to: "auth/logins#new"
 
-  get 'login', to: 'logins#new'
-  post 'login', to: 'logins#create'
+  get 'login', to: 'auth/logins#new'
+  post 'login', to: 'auth/logins#login'
 
-  get 'googlelogin/create', to: 'googlelogins#create', as: :create_google_login
+  delete 'logout', to: 'auth/logins#destroy', as: 'logout'
 
   resources :users
 end

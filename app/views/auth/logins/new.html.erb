@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <%= simple_form_for :user, url: login_path do |f| %>
+        <%= f.input :email %>
+        <%= f.input :password %>
+        <%= f.submit 'Log in', class: 'btn btn-primary' %>
+        <%= link_to 'Sign up', new_user_path, class: 'btn btn-success' %>
+      <% end %>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>
