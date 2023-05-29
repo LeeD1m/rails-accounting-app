@@ -1,5 +1,6 @@
-<%= form_with model: @user do |f| %>
 <div class="container">
+  <div class="row mt-5">
+<%= form_with model: @user do |f| %>
   <div class="col-4">
       <%= simple_form_for :user, url: login_path do |f| %>
         <%= f.input :email %>
@@ -7,5 +8,7 @@
         <%= f.submit 'Save', class: 'btn btn-primary' %>
       <% end %>
   </div>
+  <% end %>
+  </div>
 </div>
-<% end %>
+
