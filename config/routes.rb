@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post 'login', to: 'auth/logins#login'
   delete 'logout', to: 'auth/logins#destroy', as: 'logout'
   
-  
-
   resources :users
+
+  resources :reset_passwords, only: %i[edit update]
 end

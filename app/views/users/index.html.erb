@@ -1,21 +1,24 @@
 <div class="p-4">
-<p><span>Current user: <%= current_user.email %></span></p>
+<span>Current user: <%= current_user.email%></span>
+<p><span>Current role: <%= current_user.role%></span></p>
 
 <h5>All users</h5>
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>email</th>
-      <th>password</th>
+      <th class="px">ID</th>
+      <th class="px">Email</th>
+      <th class="px">Password</th>
+      <th class="px">Role</th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.password %></td>
+        <td class="px"><%= user.id %></td>
+        <td class="px"><%= user.email %></td>
+        <td class="px"><%= user.password %></td>
+        <td class="px"><%= user.role %></td>
       </tr>
     <% end %>
   </tbody>
