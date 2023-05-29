@@ -1,6 +1,7 @@
 <div class="p-4">
+<p><span>Current user: <%= current_user.email %></span></p>
 
-<h6>All users</h6>
+<h5>All users</h5>
 <table>
   <thead>
     <tr>
@@ -15,7 +16,6 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.password %></td>
-        <td><%= user.password_digest %></td>
       </tr>
     <% end %>
   </tbody>
