@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   # before_action :authentication
+  # before_action :logged_in?
   SECRET = "yoursecretword"
+
+  rescue_from ApplicationPolicy::ActionForbiddenError, with: :render_403
 
   def logged_in?
     unless current_user
@@ -14,6 +17,10 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  def render_403
+    render 'errors/403'
+  end
 
   def encode_user_data(payload)
     token = JWT.encode payload, SECRET, "HS256"

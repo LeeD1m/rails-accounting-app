@@ -64,7 +64,6 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
-    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -131,6 +130,8 @@ GEM
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
+    pundit (2.3.0)
+      activesupport (>= 3.0.0)
     racc (1.6.2)
     rack (2.2.7)
     rack-proxy (0.7.6)
@@ -234,7 +235,6 @@ PLATFORMS
   aarch64-linux
 
 DEPENDENCIES
-  bcrypt
   bootsnap (>= 1.4.4)
   bootstrap (~> 5.3.0.alpha3)
   byebug
@@ -244,6 +244,7 @@ DEPENDENCIES
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)
+  pundit
   rails (~> 6.1.7, >= 6.1.7.3)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
