@@ -7,5 +7,4 @@ Rails.application.routes.draw do
   
   resources :users
 
-  resources :reset_passwords, only: %i[edit update]
 end

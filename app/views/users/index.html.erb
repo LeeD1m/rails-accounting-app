@@ -10,6 +10,7 @@
       <th class="px">Email</th>
       <th class="px">Password</th>
       <th class="px">Role</th>
+      <th class="px">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,9 @@
         <td class="px"><%= user.email %></td>
         <td class="px"><%= user.password %></td>
         <td class="px"><%= user.role %></td>
+        <td class="px">
+          <%= link_to 'Edit', edit_user_path(user), class: "btn btn-secondary" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -27,19 +27,21 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    # UserPolicy.authorize!(current_user, @user, :reset_passwords)
+    UserPolicy.authorize!(current_user, @user, :edit_users)
 
   end
 
   def update
     @user = User.find(params[:id])
-    # UserPolicy.authorize!(current_user, @user, :reset_passwords)
+    UserPolicy.authorize!(current_user, @user, :edit_users)
     @user.update!(permitted_params)
+    flash[:success] = ["User has been updated" ]
+    redirect_to login_path
   end
     
   private
 
   def permitted_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :role)
   end
 end

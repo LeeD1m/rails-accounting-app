@@ -1,5 +1,7 @@
 class UserPolicy < ApplicationPolicy
-  def reset_passwords?
-    @current_user.role&.admin?
+
+  def edit_users?
+    @current_user.role == 'admin'
   end
+
 end
